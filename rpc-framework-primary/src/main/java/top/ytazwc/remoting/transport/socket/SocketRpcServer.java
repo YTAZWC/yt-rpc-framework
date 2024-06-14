@@ -1,6 +1,7 @@
 package top.ytazwc.remoting.transport.socket;
 
 import lombok.extern.slf4j.Slf4j;
+import top.ytazwc.config.CustomShutdownHook;
 import top.ytazwc.config.RpcServiceConfig;
 import top.ytazwc.factory.SingletonFactory;
 import top.ytazwc.provider.ServiceProvider;
@@ -11,6 +12,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 
 /**
@@ -39,10 +41,22 @@ public class SocketRpcServer {
 
     public void start() {
         try (ServerSocket server = new ServerSocket()) {
-            // 获得随机端口
-            String host = InetAddress.getLocalHost().getHostAddress();;
+            // 获得主机地址
+            String host = InetAddress.getLocalHost().getHostAddress();
+            // 绑定端口服务地址
             server.bind(new InetSocketAddress(host, 9998));
-//            CustomShutdownHook.getCustomShutdownHook().clearAll();
+            // 服务关闭时，注销所有服务
+            CustomShutdownHook.getCustomShutdownHook().clearAll();
+            Socket socket;
+            // 循环阻塞等待客户端连接
+            while ((socket = server.accept()) != null) {
+                // 输出客户端连接信息
+                log.info("client connected [{}]", socket.getInetAddress());
+                // 业务处理在另一个线程进行
+                threadPool.execute(new SocketRpcRequestHandlerRunnable(socket));
+            }
+            // 关闭线程池
+            threadPool.shutdown();
         } catch (IOException e) {
             log.error("occur IOException: ", e);
         }

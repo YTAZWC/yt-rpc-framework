@@ -20,7 +20,7 @@ import java.io.Serializable;
 @Setter
 @Builder
 @ToString
-public class ResponseRpc<T> implements Serializable {
+public class RpcResponse<T> implements Serializable {
 
     private static final long serialVersionUID = 715745410605631232L;
     /**
@@ -47,8 +47,8 @@ public class ResponseRpc<T> implements Serializable {
      * @return 返回成功响应结果
      * @param <T> 类型参数
      */
-    public static <T> ResponseRpc<T> success(T data, String requestId) {
-        ResponseRpc<T> response = new ResponseRpc<>();
+    public static <T> RpcResponse<T> success(T data, String requestId) {
+        RpcResponse<T> response = new RpcResponse<>();
         // 设置响应结果编码为成功
         response.setCode(ResponseRpcCode.SUCCESS.getCode());
         // 设置响应成功信息
@@ -67,8 +67,8 @@ public class ResponseRpc<T> implements Serializable {
      * @return 响应失败结果
      * @param <T> 类型参数
      */
-    public static <T> ResponseRpc<T> fail(ResponseRpcCode responseRpcCode) {
-        ResponseRpc<T> response = new ResponseRpc<>();
+    public static <T> RpcResponse<T> fail(ResponseRpcCode responseRpcCode) {
+        RpcResponse<T> response = new RpcResponse<>();
         response.setCode(responseRpcCode.getCode());
         response.setMessage(responseRpcCode.getMessage());
         return response;

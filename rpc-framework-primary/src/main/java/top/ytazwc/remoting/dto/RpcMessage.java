@@ -4,7 +4,7 @@ import lombok.*;
 
 /**
  * @author 花木凋零成兰
- * @title MessageRpc
+ * @title RpcMessage
  * @date 2024/5/23 14:06
  * @package top.ytazwc.remoting.dto
  * @description 网络传输信息的实体
@@ -15,7 +15,7 @@ import lombok.*;
 @Getter
 @Builder
 @ToString
-public class MessageRpc {
+public class RpcMessage {
 
     /**
      * 信息类型

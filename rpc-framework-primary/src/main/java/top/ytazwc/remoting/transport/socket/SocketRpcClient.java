@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import top.ytazwc.exception.RpcException;
 import top.ytazwc.registry.ServiceDiscovery;
 import top.ytazwc.registry.zk.ZkServiceDiscoveryImpl;
-import top.ytazwc.remoting.dto.RequestRpc;
+import top.ytazwc.remoting.dto.RpcRequest;
 import top.ytazwc.remoting.transport.RequestRpcTransport;
 
 import java.io.IOException;
@@ -36,19 +36,19 @@ public class SocketRpcClient implements RequestRpcTransport {
 
     /**
      * 发生RPC请求
-     * @param requestRpc 请求体
+     * @param rpcRequest 请求体
      * @return 服务响应结果
      */
     @Override
-    public Object sendRpcRequest(RequestRpc requestRpc) {
+    public Object sendRpcRequest(RpcRequest rpcRequest) {
         // 根据请求信息来查找对应服务
-        InetSocketAddress socketAddress = serviceDiscovery.lookupService(requestRpc);
+        InetSocketAddress socketAddress = serviceDiscovery.lookupService(rpcRequest);
         try (Socket socket = new Socket()) {
             // 客户端建立连接
             socket.connect(socketAddress);
             // 通过输出流 向服务端写入请求数据
             ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
-            out.writeObject(requestRpc);
+            out.writeObject(rpcRequest);
             // 通过输入流 从服务端读取响应数据 并返回
             ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
             return in.readObject();

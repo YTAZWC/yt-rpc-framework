@@ -18,7 +18,7 @@ import java.io.Serializable;
 @Getter
 @Builder
 @ToString
-public class RequestRpc implements Serializable {
+public class RpcRequest implements Serializable {
 
     private static final long serialVersionUID = 1905122041950251280L;
     /**

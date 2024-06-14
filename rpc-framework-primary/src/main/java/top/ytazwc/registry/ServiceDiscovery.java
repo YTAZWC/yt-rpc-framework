@@ -1,7 +1,7 @@
 package top.ytazwc.registry;
 
 import top.ytazwc.extension.SPI;
-import top.ytazwc.remoting.dto.RequestRpc;
+import top.ytazwc.remoting.dto.RpcRequest;
 
 import java.net.InetSocketAddress;
 
@@ -17,9 +17,9 @@ public interface ServiceDiscovery {
 
     /**
      * 根据服务名查找对应服务所在地址
-     * @param requestRpc
+     * @param rpcRequest
      * @return
      */
-    InetSocketAddress lookupService(RequestRpc requestRpc);
+    InetSocketAddress lookupService(RpcRequest rpcRequest);
 
 }

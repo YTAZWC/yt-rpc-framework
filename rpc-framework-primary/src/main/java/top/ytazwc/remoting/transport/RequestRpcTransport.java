@@ -1,6 +1,6 @@
 package top.ytazwc.remoting.transport;
 
-import top.ytazwc.remoting.dto.RequestRpc;
+import top.ytazwc.remoting.dto.RpcRequest;
 
 /**
  * @author 花木凋零成兰
@@ -13,8 +13,8 @@ import top.ytazwc.remoting.dto.RequestRpc;
 public interface RequestRpcTransport {
     /**
      * 发送PRC请求并获取响应结果
-     * @param requestRpc 请求体
+     * @param rpcRequest 请求体
      * @return 响应结果
      */
-    Object sendRpcRequest(RequestRpc requestRpc);
+    Object sendRpcRequest(RpcRequest rpcRequest);
 }
