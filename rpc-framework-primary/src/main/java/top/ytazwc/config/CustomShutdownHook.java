@@ -1,6 +1,7 @@
 package top.ytazwc.config;
 
 import lombok.extern.slf4j.Slf4j;
+import top.ytazwc.remoting.transport.netty.server.NettyRpcServer;
 import top.ytazwc.utils.threadpool.ThreadPoolFactoryUtil;
 
 import java.net.InetAddress;
@@ -36,7 +37,7 @@ public class CustomShutdownHook {
         // 虚拟机开始关闭时 钩子线程会被执行
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             try {
-                InetSocketAddress inetSocketAddress = new InetSocketAddress(InetAddress.getLocalHost().getHostAddress(), 9998);
+                InetSocketAddress inetSocketAddress = new InetSocketAddress(InetAddress.getLocalHost().getHostAddress(), NettyRpcServer.PORT);
                 // 清除Zookeeper管理的服务
 //                CuratorUtils.clearRegistry();
             } catch (UnknownHostException e) {

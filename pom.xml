@@ -19,6 +19,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.version>1.0-SNAPSHOT</project.version>
         <slf4j.version>1.7.25</slf4j.version>
+        <guava.version>32.1.2-jre</guava.version>
+        <netty.version>4.1.100.Final</netty.version>
+        <spring.version>5.3.33</spring.version>
     </properties>
 
     <dependencies>
@@ -44,7 +47,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>32.1.2-jre</version>
+            <version>${guava.version}</version>
         </dependency>
 
     </dependencies>

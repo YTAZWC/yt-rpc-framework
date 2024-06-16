@@ -6,7 +6,7 @@ import lombok.ToString;
 
 /**
  * @author 花木凋零成兰
- * @title ResponseRpcCode
+ * @title RpcResponseCode
  * @date 2024/5/23 14:35
  * @package top.ytazwc.enums
  * @description rpc调用响应结果 枚举类
@@ -14,7 +14,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @ToString
-public enum ResponseRpcCode {
+public enum RpcResponseCode {
 
     /**
      * 响应成功

@@ -6,6 +6,7 @@ import top.ytazwc.config.RpcServiceConfig;
 import top.ytazwc.factory.SingletonFactory;
 import top.ytazwc.provider.ServiceProvider;
 import top.ytazwc.provider.impl.ZkServiceProviderImpl;
+import top.ytazwc.remoting.transport.netty.server.NettyRpcServer;
 import top.ytazwc.utils.threadpool.ThreadPoolFactoryUtil;
 
 import java.io.IOException;
@@ -44,7 +45,7 @@ public class SocketRpcServer {
             // 获得主机地址
             String host = InetAddress.getLocalHost().getHostAddress();
             // 绑定端口服务地址
-            server.bind(new InetSocketAddress(host, 9998));
+            server.bind(new InetSocketAddress(host, NettyRpcServer.PORT));
             // 服务关闭时，注销所有服务
             CustomShutdownHook.getCustomShutdownHook().clearAll();
             Socket socket;

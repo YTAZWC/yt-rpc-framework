@@ -1,7 +1,7 @@
 package top.ytazwc.remoting.dto;
 
 import lombok.*;
-import top.ytazwc.enums.ResponseRpcCode;
+import top.ytazwc.enums.RpcResponseCode;
 
 import java.io.Serializable;
 
@@ -50,9 +50,9 @@ public class RpcResponse<T> implements Serializable {
     public static <T> RpcResponse<T> success(T data, String requestId) {
         RpcResponse<T> response = new RpcResponse<>();
         // 设置响应结果编码为成功
-        response.setCode(ResponseRpcCode.SUCCESS.getCode());
+        response.setCode(RpcResponseCode.SUCCESS.getCode());
         // 设置响应成功信息
-        response.setMessage(ResponseRpcCode.SUCCESS.getMessage());
+        response.setMessage(RpcResponseCode.SUCCESS.getMessage());
         // 设置请求id
         response.setRequestId(requestId);
         if (null != data) {
@@ -63,14 +63,14 @@ public class RpcResponse<T> implements Serializable {
 
     /**
      * 响应失败
-     * @param responseRpcCode 响应信息类
+     * @param rpcResponseCode 响应信息类
      * @return 响应失败结果
      * @param <T> 类型参数
      */
-    public static <T> RpcResponse<T> fail(ResponseRpcCode responseRpcCode) {
+    public static <T> RpcResponse<T> fail(RpcResponseCode rpcResponseCode) {
         RpcResponse<T> response = new RpcResponse<>();
-        response.setCode(responseRpcCode.getCode());
-        response.setMessage(responseRpcCode.getMessage());
+        response.setCode(rpcResponseCode.getCode());
+        response.setMessage(rpcResponseCode.getMessage());
         return response;
     }
 
