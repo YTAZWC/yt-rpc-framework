@@ -23,6 +23,11 @@
         <netty.version>4.1.100.Final</netty.version>
         <spring.version>5.3.33</spring.version>
         <curator-version>4.2.0</curator-version>
+        <!-- protostuff -->
+        <protostuff.version>1.7.2</protostuff.version>
+        <!--hessian-->
+        <hessian.version>4.0.65</hessian.version>
+        <kryo.version>4.0.2</kryo.version>
     </properties>
 
     <dependencies>

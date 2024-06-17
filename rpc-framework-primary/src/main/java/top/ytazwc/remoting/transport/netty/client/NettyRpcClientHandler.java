@@ -30,11 +30,11 @@ public class NettyRpcClientHandler extends ChannelInboundHandlerAdapter {
     // 未处理的服务器请求
     private final UnProcessedRequests unProcessedRequests;
     // RPC客户端
-    private final NettyRpcClient nettyRpcClient;
+    private final NettyRpcRequestClient nettyRpcClient;
 
     public NettyRpcClientHandler() {
         this.unProcessedRequests = SingletonFactory.getInstance(UnProcessedRequests.class);
-        this.nettyRpcClient = SingletonFactory.getInstance(NettyRpcClient.class);
+        this.nettyRpcClient = SingletonFactory.getInstance(NettyRpcRequestClient.class);
     }
 
     // 读取服务器传输的消息

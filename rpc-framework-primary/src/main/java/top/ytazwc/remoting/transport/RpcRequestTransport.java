@@ -10,7 +10,7 @@ import top.ytazwc.remoting.dto.RpcRequest;
  * @description 发送RPC请求的接口 用于顶层控制网络请求的方式
  * 不同的方式只需继承该接口即可
  */
-public interface RequestRpcTransport {
+public interface RpcRequestTransport {
     /**
      * 发送PRC请求并获取响应结果
      * @param rpcRequest 请求体
