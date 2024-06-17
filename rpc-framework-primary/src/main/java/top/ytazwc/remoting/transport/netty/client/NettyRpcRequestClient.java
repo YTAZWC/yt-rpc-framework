@@ -20,7 +20,7 @@ import top.ytazwc.remoting.constants.RpcConstants;
 import top.ytazwc.remoting.dto.RpcMessage;
 import top.ytazwc.remoting.dto.RpcRequest;
 import top.ytazwc.remoting.dto.RpcResponse;
-import top.ytazwc.remoting.transport.RequestRpcTransport;
+import top.ytazwc.remoting.transport.RpcRequestTransport;
 import top.ytazwc.remoting.transport.netty.codec.RpcMessageDecoder;
 import top.ytazwc.remoting.transport.netty.codec.RpcMessageEncoder;
 
@@ -36,7 +36,7 @@ import java.util.concurrent.TimeUnit;
  * @description NettyRpcClient
  */
 @Slf4j
-public class NettyRpcClient implements RequestRpcTransport {
+public class NettyRpcRequestClient implements RpcRequestTransport {
 
     // 服务发现 用于客户端获取服务列表
     private final ServiceDiscovery serviceDiscovery;
@@ -47,7 +47,7 @@ public class NettyRpcClient implements RequestRpcTransport {
     private final Bootstrap bootstrap;
     private final EventLoopGroup eventLoopGroup;
 
-    public NettyRpcClient() {
+    public NettyRpcRequestClient() {
         // 初始化 EventLoopGroup、Bootstrap 等资源
         eventLoopGroup = new NioEventLoopGroup();
         bootstrap = new Bootstrap();

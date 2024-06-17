@@ -7,7 +7,7 @@ import top.ytazwc.exception.RpcException;
 import top.ytazwc.extension.ExtensionLoader;
 import top.ytazwc.registry.ServiceDiscovery;
 import top.ytazwc.remoting.dto.RpcRequest;
-import top.ytazwc.remoting.transport.RequestRpcTransport;
+import top.ytazwc.remoting.transport.RpcRequestTransport;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -25,12 +25,12 @@ import java.net.Socket;
  */
 @AllArgsConstructor
 @Slf4j
-public class SocketRpcClient implements RequestRpcTransport {
+public class SocketRpcRequestClient implements RpcRequestTransport {
 
     // 服务发现
     private final ServiceDiscovery serviceDiscovery;
 
-    public SocketRpcClient() {
+    public SocketRpcRequestClient() {
         this.serviceDiscovery = ExtensionLoader.getExtensionLoader(ServiceDiscovery.class).getExtension(ServiceDiscoveryType.ZK.getName());
         // TODO ExtensionLoader
 //        this.serviceDiscovery = SingletonFactory.getInstance(ZkServiceDiscoveryImpl.class);
