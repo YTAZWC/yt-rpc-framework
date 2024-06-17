@@ -16,8 +16,8 @@ import java.net.InetSocketAddress;
 public interface ServiceRegistry {
 
     /**
-     * 服务注册方法
-     * @param rpcServiceName 注册服务名
+     * 服务注册方法 注册服务到注册中心
+     * @param rpcServiceName 完整的服务名称(class name+group+version)
      * @param inetSocketAddress 服务所在地址
      */
     void registerService(String rpcServiceName, InetSocketAddress inetSocketAddress);

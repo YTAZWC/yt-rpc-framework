@@ -12,9 +12,10 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import top.ytazwc.enums.CompressType;
 import top.ytazwc.enums.SerializationType;
+import top.ytazwc.enums.ServiceDiscoveryType;
+import top.ytazwc.extension.ExtensionLoader;
 import top.ytazwc.factory.SingletonFactory;
 import top.ytazwc.registry.ServiceDiscovery;
-import top.ytazwc.registry.zk.ZkServiceDiscoveryImpl;
 import top.ytazwc.remoting.constants.RpcConstants;
 import top.ytazwc.remoting.dto.RpcMessage;
 import top.ytazwc.remoting.dto.RpcRequest;
@@ -67,8 +68,8 @@ public class NettyRpcClient implements RequestRpcTransport {
                     }
                 });
         // TODO ExtensionLoader
-//        this.serviceDiscovery = new ZkServiceDiscoveryImpl();
-        this.serviceDiscovery = SingletonFactory.getInstance(ZkServiceDiscoveryImpl.class);
+        this.serviceDiscovery = ExtensionLoader.getExtensionLoader(ServiceDiscovery.class).getExtension(ServiceDiscoveryType.ZK.getName());
+//        this.serviceDiscovery = SingletonFactory.getInstance(ZkServiceDiscoveryImpl.class);
         this.unprocessedRequests = SingletonFactory.getInstance(UnProcessedRequests.class);
         this.channelProvider = SingletonFactory.getInstance(ChannelProvider.class);
     }

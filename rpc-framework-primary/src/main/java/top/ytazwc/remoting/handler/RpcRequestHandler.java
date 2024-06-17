@@ -37,7 +37,7 @@ public class RpcRequestHandler {
      */
     public Object handle(RpcRequest rpcRequest) {
         // 根据客户端请求信息 获取目标服务
-        Object service = serviceProvider.getService(rpcRequest.getPpcServiceName());
+        Object service = serviceProvider.getService(rpcRequest.getRpcServiceName());
         return invokeTargetMethod(rpcRequest, service);
     }
 

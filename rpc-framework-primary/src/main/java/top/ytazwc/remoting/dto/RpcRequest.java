@@ -54,7 +54,7 @@ public class RpcRequest implements Serializable {
     /**
      * 获取调用服务名称(接口名+组名+版本)
      */
-    public String getPpcServiceName() {
+    public String getRpcServiceName() {
         // 服务名 = 接口名+组+版本
         return this.getInterfaceName() + this.getGroup() +this.getVersion();
     }

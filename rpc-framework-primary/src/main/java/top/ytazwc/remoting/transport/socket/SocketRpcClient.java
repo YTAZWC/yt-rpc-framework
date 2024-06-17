@@ -2,10 +2,10 @@ package top.ytazwc.remoting.transport.socket;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import top.ytazwc.enums.ServiceDiscoveryType;
 import top.ytazwc.exception.RpcException;
-import top.ytazwc.factory.SingletonFactory;
+import top.ytazwc.extension.ExtensionLoader;
 import top.ytazwc.registry.ServiceDiscovery;
-import top.ytazwc.registry.zk.ZkServiceDiscoveryImpl;
 import top.ytazwc.remoting.dto.RpcRequest;
 import top.ytazwc.remoting.transport.RequestRpcTransport;
 
@@ -31,10 +31,9 @@ public class SocketRpcClient implements RequestRpcTransport {
     private final ServiceDiscovery serviceDiscovery;
 
     public SocketRpcClient() {
-//        this.serviceDiscovery = ExtensionLoader.getExtensionLoader(ServiceDiscovery.class).getExtension("zk");
+        this.serviceDiscovery = ExtensionLoader.getExtensionLoader(ServiceDiscovery.class).getExtension(ServiceDiscoveryType.ZK.getName());
         // TODO ExtensionLoader
-//        this.serviceDiscovery = new ZkServiceDiscoveryImpl();
-        this.serviceDiscovery = SingletonFactory.getInstance(ZkServiceDiscoveryImpl.class);
+//        this.serviceDiscovery = SingletonFactory.getInstance(ZkServiceDiscoveryImpl.class);
     }
 
     /**
