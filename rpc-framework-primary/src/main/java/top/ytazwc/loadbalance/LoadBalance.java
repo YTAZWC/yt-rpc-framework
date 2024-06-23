@@ -1,5 +1,6 @@
 package top.ytazwc.loadbalance;
 
+import top.ytazwc.extension.SPI;
 import top.ytazwc.remoting.dto.RpcRequest;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
  * @package top.ytazwc.loadbalance
  * @description 负载均衡策略接口
  */
+@SPI
 public interface LoadBalance {
     /**
      * 从现有的服务列表中选择一个服务
